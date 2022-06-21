@@ -12,9 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: |
-        git remote add origin https://github.com/scipy/HiGHS.git
-        git remote add upstream https://github.com/ERGO-Code/HiGHS.git
+    - run: git remote add upstream https://github.com/ERGO-Code/HiGHS.git
     - run: |
         git fetch upstream
         git describe --tags `git rev-list --tags --max-count=1` >> $latestTag
