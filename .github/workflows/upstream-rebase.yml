@@ -23,6 +23,6 @@ jobs:
         git push -f origin main
     - uses: peter-evans/create-pull-request@v3
       with:
-        title: "Rebase fork from upstream to ${{ latestTag }}"
+        title: "Rebase fork from upstream to $latestTag"
         branch: upstream-rebase
-        commit-message: "[Bot] Rebase fork from upstream to ${{ latestTag }}"
+        commit-message: "[Bot] Rebase fork from upstream to $latestTag"
