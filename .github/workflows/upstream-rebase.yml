@@ -15,7 +15,7 @@ jobs:
     - run: git remote add upstream https://github.com/ERGO-Code/HiGHS.git
     - run: |
         git fetch upstream
-        echo "git describe --tags `git rev-list --tags --max-count=1`" >> $latestTag
+        echo "(git describe --tags `git rev-list --tags --max-count=1`)" >> $latestTag
         git checkout main
         git rebase upstream/$latestTag
         git push -f origin main
