@@ -13,12 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: git remote add upstream https://github.com/ERGO-Code/HiGHS.git
-    - run: |
-        git fetch upstream
-        echo "(git describe --tags `git rev-list --tags --max-count=1`)" >> $latestTag
-        git checkout main
-        git rebase upstream/$latestTag
-        git push -f origin main
+    - run: git fetch upstream
+    - run: echo "git describe --tags `git rev-list --tags --max-count=1`" >> "$latestTag"
+    - run: git checkout main
+    - run: git rebase upstream/$latestTag
+    - run: git push -f origin main
     - uses: peter-evans/create-pull-request@v3
       with:
         title: "Rebase fork from upstream to $latestTag"
