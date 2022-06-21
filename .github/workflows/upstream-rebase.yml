@@ -15,7 +15,7 @@ jobs:
     - run: git remote add upstream https://github.com/ERGO-Code/HiGHS.git
     - run: git fetch upstream
     - run: |
-        latestTag=$(git tag -l --sort -version:refname | head -n 1)
+        echo "latestTag=$(git tag -l --sort -version:refname | head -n 1)" >> $GITHUB_ENV
         echo "$latestTag"
     #- run: git checkout main
     - run: git rebase upstream/$latestTag
