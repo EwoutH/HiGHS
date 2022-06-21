@@ -5,7 +5,7 @@ on:
   push:
     paths:
     - '.github/workflows/upstream-rebase.yml'
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   upstream-rebase:
