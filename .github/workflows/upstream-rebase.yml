@@ -17,6 +17,7 @@ jobs:
     - run: |
         echo "latestTag=$(git tag -l --sort -version:refname | head -n 1)" >> $GITHUB_ENV
         echo "$latestTag"
+    - run: git fetch origin
     - run: git checkout ci-test # replace with main
     - run: git rebase upstream/$latestTag
     - run: git push -f origin ci-test # main
