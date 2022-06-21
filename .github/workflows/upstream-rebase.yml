@@ -24,5 +24,6 @@ jobs:
     - uses: peter-evans/create-pull-request@v4
       with:
         title: "Rebase fork from upstream to $latestTag"
+        base: ci-test
         branch: upstream-rebase
         commit-message: "[Bot] Rebase fork from upstream to $latestTag"
