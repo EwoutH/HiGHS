@@ -1,0 +1,28 @@
+name: "Rebase fork from upstream"
+on:
+  schedule:
+    - cron: '0 8 * * *' # Every day on 8:00 UTC
+  push:
+    paths:
+    - '.github/workflows/upstream-rebase.yml'
+  workflow-dispatch:
+
+jobs:
+  upstream-rebase:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        git remote add origin https://github.com/scipy/HiGHS.git
+        git remote add upstream https://github.com/ERGO-Code/HiGHS.git
+    - run: |
+        git fetch upstream
+        latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        git checkout main
+        git rebase upstream/$latestTag
+        git push -f origin main
+    - uses: peter-evans/create-pull-request@v3
+      with:
+        title: "Rebase fork from upstream to ${{ latestTag }}"
+        branch: upstream-rebase
+        commit-message: "[Bot] Rebase fork from upstream to ${{ latestTag }}"
