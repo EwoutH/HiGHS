@@ -17,9 +17,9 @@ jobs:
     - run: |
         echo "latestTag=$(git tag -l --sort -version:refname | head -n 1)" >> $GITHUB_ENV
         echo "$latestTag"
-    #- run: git checkout main
+    - run: git checkout master # replace with main
     - run: git merge upstream/master
-    - run: git push -f origin # main
+    - run: git push -f origin master # main
     - uses: peter-evans/create-pull-request@v4
       with:
         title: "Rebase fork from upstream to $latestTag"
