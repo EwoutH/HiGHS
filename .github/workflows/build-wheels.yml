@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Build Wheels
-        uses: pypa/cibuildwheel@v2.7.0
+        uses: pypa/cibuildwheel@v2.16.0
         env:
           CIBW_ENVIRONMENT: >
             REPAIR_LIBRARY_PATH=${{runner.workspace}}/installs/highs/lib 
